@@ -2,8 +2,8 @@
 
 Identifies residents at risk of not renewing their leases and delivers renewal events to an external Revenue Management System (RMS) via signed webhooks with guaranteed delivery.
 
-<img width="762" height="706" alt="Screenshot 2026-03-19 at 2 17 43 p m" src="https://github.com/user-attachments/assets/866efab4-fa97-4a64-b63c-ccdb992319b3" />
-<img width="1339" height="816" alt="Screenshot 2026-03-19 at 2 17 19 p m" src="https://github.com/user-attachments/assets/0d21adf7-55f9-4bd7-b1b4-4fcb9f1c8448" />
+<img width="5120" height="2636" alt="image" src="https://github.com/user-attachments/assets/a0991587-7c1a-47c4-a5aa-d1125ae0e6c1" />
+<img width="5120" height="2636" alt="image" src="https://github.com/user-attachments/assets/ee352015-83d6-4fcb-9c4d-f1066d532395" />
 
 ---
 
