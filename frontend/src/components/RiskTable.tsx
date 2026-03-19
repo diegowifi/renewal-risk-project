@@ -189,10 +189,15 @@ export default function RiskTable({ flags, propertyId }: Props) {
                   <td className="py-3 pr-4">
                     <button
                       onClick={() => toggle(flag.residentId)}
-                      className="text-gray-400 hover:text-gray-700 transition-colors text-base leading-none"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
+                                 text-xs font-medium text-gray-500 bg-gray-100
+                                 hover:bg-gray-200 hover:text-gray-800
+                                 active:bg-gray-300 transition-colors select-none"
                       aria-label={isExpanded ? 'Collapse signals' : 'Expand signals'}
+                      aria-expanded={isExpanded}
                     >
-                      {isExpanded ? '▾' : '▸'}
+                      <span className={`transition-transform duration-150 ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                      Signals
                     </button>
                   </td>
                   <td className="py-3 text-right">
