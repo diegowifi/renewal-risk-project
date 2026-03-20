@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { RiskFlag, RiskTier } from '../types';
 import { fetchLatestRisk, calculateRisk } from '../api';
@@ -92,7 +92,7 @@ export default function RenewalRiskPage() {
   const [tierFilter, setTierFilter] = useState<TierFilter>('all');
 
   // ── Load data ──────────────────────────────────────────────────────────
-  async function loadData() {
+  const loadData = useCallback(async () => {
     if (!propertyId) return;
     setPageState({ status: 'loading' });
     try {
@@ -104,9 +104,9 @@ export default function RenewalRiskPage() {
         message: err instanceof Error ? err.message : 'Failed to load data',
       });
     }
-  }
+  }, [propertyId]);
 
-  useEffect(() => { loadData(); }, [propertyId]);
+  useEffect(() => { loadData(); }, [loadData]);
 
   // ── Calculate ──────────────────────────────────────────────────────────
   async function handleCalculate(e: React.FormEvent) {

@@ -7,13 +7,19 @@ import apiRouter from './api/routes';
 export function createApp(): Application {
   const app = express();
 
-  app.use(cors());
+  app.use(cors({
+    origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+    methods: ['GET', 'POST'],
+  }));
   app.use(express.json({ limit: '1mb' }));
 
-  // Minimal request logging in non-production environments.
+  // Request/response logging with timing in non-production environments.
   if (process.env.NODE_ENV !== 'production') {
-    app.use((req: Request, _res: Response, next: NextFunction) => {
-      console.log(`  → ${req.method} ${req.path}`);
+    app.use((req: Request, res: Response, next: NextFunction) => {
+      const start = Date.now();
+      res.on('finish', () => {
+        console.log(`  → ${req.method} ${req.path} ${res.statusCode} (${Date.now() - start}ms)`);
+      });
       next();
     });
   }

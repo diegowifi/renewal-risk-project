@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import type { RiskFlag, RiskTier } from '../types';
 import { triggerRenewalEvent } from '../api';
 
@@ -167,9 +167,8 @@ export default function RiskTable({ flags, propertyId }: Props) {
             const { signals } = flag;
 
             return (
-              <>
+              <Fragment key={flag.residentId}>
                 <tr
-                  key={flag.residentId}
                   className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                 >
                   <td className="py-3 pr-4 font-medium text-gray-900">{flag.name}</td>
@@ -206,7 +205,7 @@ export default function RiskTable({ flags, propertyId }: Props) {
                 </tr>
 
                 {isExpanded && (
-                  <tr key={`${flag.residentId}-signals`} className="border-b border-gray-100 bg-gray-50">
+                  <tr className="border-b border-gray-100 bg-gray-50">
                     <td colSpan={7} className="px-4 py-3">
                       <div className="flex flex-wrap gap-x-8 gap-y-2">
                         <SignalRow
@@ -237,7 +236,7 @@ export default function RiskTable({ flags, propertyId }: Props) {
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             );
           })}
         </tbody>
